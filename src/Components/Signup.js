@@ -2,13 +2,14 @@
 import axios from "axios";
 import React, {useState,useContext} from "react";
 import UserContext from "../Context/UserContext";
-
+import { useNavigate } from "react-router-dom";
 
 
 const Signup = () => {
   const [userInput, setUserInput] = useState({name:"", email: "", password: "", confirmPassword: ""})
 
   const {setToken} = useContext(UserContext)
+  const navigate = useNavigate()
 
   let {name, email, password, confirmPassword} = userInput
 
@@ -37,9 +38,10 @@ const Signup = () => {
            )
       console.log(response.data)
       setToken(response.data.data.token)
-      // add it to local stroage
+      
       setUserInput({name:"", email: "", password: "", confirmPassword: ""})
       alert("User Registered Successfully")
+      navigate("/dashboard")
      }
 
     catch(error){
@@ -48,8 +50,7 @@ const Signup = () => {
 
     }
   }
-
-    
+  
     return(
         <div>
             <h1>Signup</h1>
