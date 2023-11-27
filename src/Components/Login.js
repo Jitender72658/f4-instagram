@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, {useState,useContext} from "react";
+import React, {useState,useContext,useEffect} from "react";
 import UserContext from "../Context/UserContext";
 import { useNavigate } from "react-router-dom";
 
@@ -7,11 +7,18 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [userInput, setUserInput] = useState({ email: "", password: ""})
-  const {setToken} = useContext(UserContext)
+  const {token, setToken} = useContext(UserContext)
 
-  const naviagte = useNavigate()
+  const navigate = useNavigate()
 
   let {email, password} = userInput
+
+
+   useEffect(()=>{
+         if(token || localStorage.getItem("token")){
+             navigate("/dashboard")
+         }
+   },[])
 
 
     function updateInput(e){
@@ -36,11 +43,13 @@ const Login = () => {
            )
            console.log(response.data)
            setToken(response.data.data.token)
+            // save to local storage 
+    localStorage.setItem("token", response.data.data.token)
           
       
       setUserInput({email: "", password: ""})
       alert("User  Signed Successfully")
-      naviagte("/dashboard")
+      navigate("/dashboard")
      }
      
     catch(error){

@@ -40,6 +40,8 @@ const Signup = () => {
       setToken(response.data.data.token)
       
       setUserInput({name:"", email: "", password: "", confirmPassword: ""})
+      // save to local storage 
+    localStorage.setItem("token", response.data.data.token)
       alert("User Registered Successfully")
       navigate("/dashboard")
      }
