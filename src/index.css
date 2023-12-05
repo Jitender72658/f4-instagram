@@ -6,8 +6,75 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input,button{
+  display: block;
+  margin: 10px;
+}
+.loginContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  padding: 30px;
+  gap: 25px;
+  margin-top: 20vh;
+  box-shadow: 15px -15px 60px 5px rgba(34, 35,218, 0.6),
+  -15px 15px 60px 5px rgba(220,55,120,0.6);
+  width: max-content;
+  margin: 12vw 35vw;
+}
+.signupContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  padding: 30px;
+  gap: 25px;
+  margin-top: 20vh;
+  box-shadow: 15px -15px 60px 5px rgba(34, 35,218, 0.6),
+  -15px 15px 60px 5px rgba(220,55,120,0.6);
+  margin: 12vw 35vw;
+  max-width: max-content;
+}
+input{
+  width: 90%;
+  height: 24px;
+  padding: 5px 12px;
+  font-size: medium;
+}
+button{
+  background-color: rgb(59, 167, 209);
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+.buttonContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.redirectBtnContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dashboardContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  padding: 30px;
+  gap: 25px;
+  margin-top: 20vh;
+  border: 3px solid black;
+  margin: 12vw 35vw;
+  max-width: max-content;
 }

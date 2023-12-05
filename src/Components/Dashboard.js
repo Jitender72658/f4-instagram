@@ -24,10 +24,10 @@ const Dashboard = () => {
     },[])
 
     useEffect(() => {
-        getZuku()
+        getJoke()
     },[token])
 
-    function getZuku(){
+    function getJoke(){
           axios.get("https://instagram-express-app.vercel.app/api/auth/zuku",{
               headers:{
                   Authorization: `Bearer ${token}`
@@ -63,7 +63,7 @@ const Dashboard = () => {
 
 
     return(
-        <div>
+        <div className="dashboardContainer">
               <h1> Welcome {name} </h1>
               {
                 joke && <p>{joke}</p>

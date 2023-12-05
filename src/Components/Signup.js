@@ -22,39 +22,36 @@ const Signup = () => {
 
     async function implementSubmit(e){
            e.preventDefault()
-       if(!name || !email || !password || !confirmPassword){
+           if(!name || !email || !password || !confirmPassword){
               alert("Please fill all the fields")
               return
-       }   
-       else if(password !== confirmPassword){
+            }   
+            else if(password !== confirmPassword){
                 alert("Password and Confirm Password should be same")
                 return
-       }
-
-       else{
-        
-     try{
-      const response =  await axios.post("https://instagram-express-app.vercel.app/api/auth/signup", {name:name,email,password}
-           )
-      console.log(response.data)
-      setToken(response.data.data.token)
-      
-      setUserInput({name:"", email: "", password: "", confirmPassword: ""})
-      // save to local storage 
-    localStorage.setItem("token", response.data.data.token)
-      alert("User Registered Successfully")
-      navigate("/dashboard")
-     }
-
-    catch(error){
-            console.log(error.response.data.message)
+            }
+            else{
+               try{
+                  const response =  await axios.post("https://instagram-express-app.vercel.app/api/auth/signup", {name:name,email,password})
+                  console.log(response.data)
+                  setToken(response.data.data.token)   
+                  setUserInput({name:"", email: "", password: "", confirmPassword: ""})
+                 // save to local storage 
+                 localStorage.setItem("token", response.data.data.token)
+                 alert("User Registered Successfully")
+                 navigate("/dashboard")
+                 }
+               catch(error){
+                 console.log(error.response.data.message)
+                 }
+               }
+   
+      }
+    function redirectToLoginPage(){
+         navigate("/login")
     }
-
-    }
-  }
-  
     return(
-        <div>
+        <div className="signupContainer">
             <h1>Signup</h1>
             <form onSubmit={implementSubmit}>
 
@@ -75,8 +72,14 @@ const Signup = () => {
                     onChange={updateInput} 
                     value={confirmPassword}
                 />
+                <div className="buttonContainer">
+                    <button type="submit">Submit</button>
+                </div>
+                <div className="redirectBtnContainer">
+                    <span>Already have an account?</span>
+                    <button onClick={redirectToLoginPage}>Login In</button>
+                </div>
                 
-                <button type="submit">Submit</button>
             </form>
             
         </div>
